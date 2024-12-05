@@ -10,7 +10,7 @@ services:
       - DB_HOST=db 
       - DB_USER=root
       - DB_PASSWORD=example
-      - DB_NAME-todo-db
+      - DB_NAME-todo_db
     depends_on:
       - db
 

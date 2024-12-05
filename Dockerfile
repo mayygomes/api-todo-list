@@ -2,7 +2,7 @@
 FROM node:18
 
 # DEfinir o diretório de trabalho
-WORKDIR /api-todo-list/src/app 
+WORKDIR /usr/src/app 
 
 # Copiar package.json e package-lock.json
 COPY package.json ./
@@ -18,4 +18,5 @@ COPY . .
 EXPOSE 3000
 
 # Comando para iniciar a aplicação docker pull node
+#CMD ["npm", "start"]
 CMD ["npm", "start"]
