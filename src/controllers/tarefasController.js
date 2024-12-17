@@ -1,7 +1,7 @@
 const connection = require('../config/db');
 
 // Criar uma nova tarefa
-exports.createTarefa = (req, res) => {
+const createTarefa = (req, res) => {
   const { descricao, usuario_id } = req.body;
   const query = 'INSERT INTO tarefas (descricao, usuario_id) VALUES (?, ?)';
 
@@ -14,8 +14,8 @@ exports.createTarefa = (req, res) => {
   });
 };
 
-// Listar todas as tarefas de um usuário
-exports.getTarefas = (req, res) => {
+// Vizualizar tarefas
+const getTarefas = (req, res) => {
   const { usuario_id } = req.params;
   const query = 'SELECT * FROM tarefas WHERE usuario_id = ?';
 
@@ -29,7 +29,7 @@ exports.getTarefas = (req, res) => {
 };
 
 // Atualizar uma tarefa
-exports.updateTarefa = (req, res) => {
+const updateTarefa = (req, res) => {
   const { id } = req.params;
   const { descricao, status } = req.body;
   const query = 'UPDATE tarefas SET descricao = ?, status = ? WHERE id = ?';
@@ -44,7 +44,7 @@ exports.updateTarefa = (req, res) => {
 };
 
 // Deletar uma tarefa
-exports.deleteTarefa = (req, res) => {
+const deleteTarefa = (req, res) => {
   const { id } = req.params;
   const query = 'DELETE FROM tarefas WHERE id = ?';
 
@@ -56,3 +56,11 @@ exports.deleteTarefa = (req, res) => {
     res.status(200).send('Tarefa deletada com sucesso');
   });
 };
+
+  module.exports = {
+    createTarefa,
+    getTarefas,
+    updateTarefa,
+    deleteTarefa,
+  };
+  

@@ -1,7 +1,7 @@
 const connection = require('../config/db');
 
 // Criar um novo usuário
-exports.createUsuario = (req, res) => {
+const createUsuario = (req, res) => {
   const { nome, email, senha } = req.body;
   const query = 'INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)';
 
@@ -15,7 +15,7 @@ exports.createUsuario = (req, res) => {
 };
 
 // Listar todos os usuários
-exports.getUsuarios = (req, res) => {
+const getUsuarios = (req, res) => {
   const query = 'SELECT * FROM usuarios';
 
   connection.query(query, (err, results) => {
@@ -28,7 +28,7 @@ exports.getUsuarios = (req, res) => {
 };
 
 // Atualizar um usuário
-exports.updateUsuario = (req, res) => {
+const updateUsuario = (req, res) => {
   const { id } = req.params;
   const { nome, email, senha } = req.body;
   const query = 'UPDATE usuarios SET nome = ?, email = ?, senha = ? WHERE id = ?';
@@ -43,7 +43,7 @@ exports.updateUsuario = (req, res) => {
 };
 
 // Deletar um usuário
-exports.deleteUsuario = (req, res) => {
+const deleteUsuario = (req, res) => {
   const { id } = req.params;
   const query = 'DELETE FROM usuarios WHERE id = ?';
 
@@ -54,4 +54,12 @@ exports.deleteUsuario = (req, res) => {
     }
     res.status(200).send('Usuário deletado com sucesso');
   });
+};
+
+// Exportando as funções
+module.exports = {
+  createUsuario,
+  getUsuarios,
+  updateUsuario,
+  deleteUsuario,
 };
