@@ -7,7 +7,8 @@ const createUsuario = (req, res) => {
 
   connection.query(query, [nome, email, senha], (err, results) => {
     if (err) {
-      console.error(err);
+     console.log('Erro:', err);
+
       return res.status(500).send('Erro ao criar o usuário');
     }
     res.status(201).send({ id: results.insertId, nome, email });
@@ -20,7 +21,8 @@ const getUsuarios = (req, res) => {
 
   connection.query(query, (err, results) => {
     if (err) {
-      console.error(err);
+     console.log('Erro:', err);
+
       return res.status(500).send('Erro ao listar usuários');
     }
     res.status(200).json(results);
@@ -35,7 +37,8 @@ const updateUsuario = (req, res) => {
 
   connection.query(query, [nome, email, senha, id], (err, results) => {
     if (err) {
-      console.error(err);
+     console.log('Erro:', err);
+
       return res.status(500).send('Erro ao atualizar usuário');
     }
     res.status(200).send('Usuário atualizado com sucesso');
@@ -49,7 +52,8 @@ const deleteUsuario = (req, res) => {
 
   connection.query(query, [id], (err, results) => {
     if (err) {
-      console.error(err);
+     console.log('Erro:', err);
+
       return res.status(500).send('Erro ao deletar usuário');
     }
     res.status(200).send('Usuário deletado com sucesso');

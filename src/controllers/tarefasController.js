@@ -7,7 +7,7 @@ const createTarefa = (req, res) => {
 
   connection.query(query, [descricao, usuario_id], (err, results) => {
     if (err) {
-      console.error(err);
+      console.log('Erro:', err);
       return res.status(500).send('Erro ao criar a tarefa');
     }
     res.status(201).send({ id: results.insertId, descricao });
@@ -21,7 +21,7 @@ const getTarefas = (req, res) => {
 
   connection.query(query, [usuario_id], (err, results) => {
     if (err) {
-      console.error(err);
+      console.log('Erro:', err);
       return res.status(500).send('Erro ao listar tarefas');
     }
     res.status(200).json(results);
@@ -36,7 +36,7 @@ const updateTarefa = (req, res) => {
 
   connection.query(query, [descricao, status, id], (err, results) => {
     if (err) {
-      console.error(err);
+      console.log('Erro:', err);
       return res.status(500).send('Erro ao atualizar tarefa');
     }
     res.status(200).send('Tarefa atualizada com sucesso');
@@ -50,7 +50,7 @@ const deleteTarefa = (req, res) => {
 
   connection.query(query, [id], (err, results) => {
     if (err) {
-      console.error(err);
+      console.log('Erro:', err);
       return res.status(500).send('Erro ao deletar tarefa');
     }
     res.status(200).send('Tarefa deletada com sucesso');

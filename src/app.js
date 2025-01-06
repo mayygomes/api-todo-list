@@ -14,6 +14,10 @@ app.use('/api', usuariosRoutes);
 app.use('/api', tarefasRoutes);
 app.use('/api', loginRoutes);
 
+app.use((req, res) => {
+  res.status(404).json({ error: 'Rota não encontrada' });
+});
+
 app.listen(3005, () => {
   console.log('Servidor rodando na porta 3005');
 });
